@@ -21,7 +21,7 @@ void Timet2ASC(time_t tTime, char* abASCTime,int nStart, int nLen)
 	char abASCTime_temp[15]={0,};
 
 	localtime_r(&tTime,&timeInfo);
-	strftime(abASCTime_temp,14,"%Y%m%d%H%M",&timeInfo);
+	strftime(abASCTime_temp,14,"%Y%m%d%H%M%S",&timeInfo);
 	memcpy(abASCTime, &abASCTime_temp[nStart], nLen);
 }
 
@@ -31,7 +31,7 @@ time_t ASCTime2Timet(char* abASCTime)
 	struct tm timeInfo;
 
 	timeInfo.tm_year=ASC2INT(abASCTime, 4)-1900;
-	timeInfo.tm_mon=ASC2INT(abASCTime+4, 2);
+	timeInfo.tm_mon=ASC2INT(abASCTime+4, 2)-1;
 	timeInfo.tm_mday=ASC2INT(abASCTime+6, 2);
 	timeInfo.tm_hour=ASC2INT(abASCTime+8, 2);
 	timeInfo.tm_min=ASC2INT(abASCTime+10, 2);
@@ -45,7 +45,7 @@ time_t ASCDate2Timet(char* abASCDate)
 	struct tm timeInfo;
 
 	timeInfo.tm_year=ASC2INT(abASCDate, 4)-1900;
-	timeInfo.tm_mon=ASC2INT(abASCDate+4, 2);
+	timeInfo.tm_mon=ASC2INT(abASCDate+4, 2)-1;
 	timeInfo.tm_mday=ASC2INT(abASCDate+6, 2);
 
 	return mktime(&timeInfo);
