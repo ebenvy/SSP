@@ -145,7 +145,7 @@ static void* write_fun()
 			}
 			else
 			{
-				printf("Áßº¹\n");
+				printf("ì¤‘ë³µ\n");
 			}
 			if(prevData!= NULL)
 				free(prevData);
@@ -157,7 +157,7 @@ static void* write_fun()
 		}
 		pthread_mutex_unlock(&mutex);
 		//printf("write attemp\n");
-		usleep(1000000);
+		usleep(100000);
 
 	}
 	while(!g_queue_is_empty(q))
@@ -191,7 +191,7 @@ static void* input_console_fun()
 			isExit = 1;
 			break;
 		}
-		//¹ÂÅØ½º ¶ô
+		//ë®¤í…ìŠ¤ ë½
 		pthread_mutex_lock(&mutex);
 		//memcpy(arr[totalRecordCount++],buf,strlen(buf));
 		temp = (char*)malloc(strlen(buf)+1);
@@ -199,7 +199,7 @@ static void* input_console_fun()
 		memcpy(temp, buf,strlen(buf));
 		g_queue_push_tail(q,temp );
 		pthread_mutex_unlock(&mutex);
-		//¹ÂÅØ½º ¾ğ¶ô
+		//ë®¤í…ìŠ¤ ì–¸ë½
 
 
 	}
