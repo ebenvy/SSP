@@ -18,7 +18,7 @@
 #include <pthread.h>
 
 #define BUFSIZE 1024
-
+#define PORT 1111
 
 void* clnt_connection(void * arg);
 void send_message(char * message, int sock, int len);
