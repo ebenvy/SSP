@@ -69,6 +69,7 @@ void *clnt_connection(void *arg)
 		 printf("message:%s\n",message);
 
 		 send_message(message,clnt_sock, str_len);
+		 memset(message,0x00,sizeof(message));
 
 	 }
 
