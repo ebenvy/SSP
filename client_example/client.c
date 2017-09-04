@@ -66,7 +66,7 @@ void* recv_message(void* arg)
  {
 	  str_len = read(sock, name_message, NAMESIZE+BUFSIZE-1);
 	  printf("strlen[%d]\n",str_len);
-	  if(str_len == -1)
+	  if(str_len <=0)
 	  {
 		  return (void*)1;
 	  }
