@@ -22,8 +22,12 @@ void __attribute__((constructor))console_setting_for_eclipse_debugging(void)
 int typeCount =0;
 static void _free_fun(gpointer data)
 {
+	printf("free fun\n");
 	if(data)
+	{
+		printf("free data\n");
 		free(data);
+	}
 }
 
 typedef struct
@@ -74,8 +78,11 @@ void main()
 	while(!isExit);
 
 	//pthread_join(inputThread,NULL);
+	printf("exit\n");
 	pthread_mutex_destroy(&mutex);
+
 	g_queue_free_full(q,_free_fun);
+	g_queue_free(q);
 	fclose(fdRead);
 	fclose(fdWrite);
 }
@@ -130,7 +137,7 @@ static void* write_fun()
 {
 	int nWriteCount =0;
 	char* data;
-	char* prevData =NULL;
+	char prevData[1024] ={0,};
 	while(!isExit)
 	{
 		pthread_mutex_lock(&mutex);
@@ -138,21 +145,19 @@ static void* write_fun()
 		{
 
 			data = g_queue_pop_head(q);
-			if(prevData==NULL || memcmp(prevData,data,strlen(data))!=0)
+			if(strlen(prevData)==0 || memcmp(prevData,data,strlen(data))!=0)
 			{
 				fprintf(fdWrite,"%s\n", data);
-				//printf();
+
 			}
 			else
 			{
-				printf("Ï§ëÎ≥µ\n");
+				printf("¡ﬂ∫π\n");
 			}
-			if(prevData!= NULL)
-				free(prevData);
-			//nWriteCount++;
-			//fprintf(fdWrite,"%s\n", data);
-			prevData = (char*)malloc(sizeof(char)*strlen(data));
+
+			memset(prevData,0x00,sizeof(prevData));
 			memcpy(prevData,data,strlen(data));
+			free(data);
 
 		}
 		pthread_mutex_unlock(&mutex);
@@ -164,7 +169,7 @@ static void* write_fun()
 	{
 
 		data = g_queue_pop_head(q);
-		if(prevData==NULL || memcmp(prevData,data,strlen(data))!=0)
+		if(strlen(prevData)==0 || memcmp(prevData,data,strlen(data))!=0)
 		{
 			fprintf(fdWrite,"%s\n", data);
 
@@ -172,7 +177,8 @@ static void* write_fun()
 		if(prevData!= NULL)
 			free(prevData);
 
-		prevData = (char*)malloc(sizeof(char)*strlen(data));
+		memset(prevData,0x00,sizeof(prevData));
+		memcpy(prevData,data,strlen(data));
 		memcpy(prevData,data,strlen(data));
 	}
 
@@ -191,7 +197,7 @@ static void* input_console_fun()
 			isExit = 1;
 			break;
 		}
-		//ÎÆ§ÌÖçÏä§ ÎùΩ
+		//π¬≈ÿΩ∫ ∂Ù
 		pthread_mutex_lock(&mutex);
 		//memcpy(arr[totalRecordCount++],buf,strlen(buf));
 		temp = (char*)malloc(strlen(buf)+1);
@@ -199,7 +205,7 @@ static void* input_console_fun()
 		memcpy(temp, buf,strlen(buf));
 		g_queue_push_tail(q,temp );
 		pthread_mutex_unlock(&mutex);
-		//ÎÆ§ÌÖçÏä§ Ïñ∏ÎùΩ
+		//π¬≈ÿΩ∫ æ∂Ù
 
 
 	}
