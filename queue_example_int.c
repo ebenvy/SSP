@@ -17,8 +17,7 @@ typedef struct PERSON
 }PERSON;
 static void _free_fun(gpointer data)
 {
-	//if(data)
-		//free(data);
+
 }
 
 
