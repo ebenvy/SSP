@@ -1,8 +1,8 @@
 /*
- * queue_sample.c
+ * queue_sample.c êµ¬ì¡°ì²´
  *
  *  Created on: 2017. 4. 16.
- *      Author: ÀÌ¼ÒÁ¤
+ *      Author: ì´ì†Œì •
  */
 #include<stdio.h>
 #include<glib.h>
@@ -33,11 +33,11 @@ gint sorter(gconstpointer a, gconstpointer b, gpointer data) {
 }
 int main()
 {
-	//¿ä°É ÇØÁà¾ß ·±Å¸ÀÓ½Ã ÄÜ¼Ö¿¡¼­ ½Ã½ºÅÛ Ãâ·ÂÀ» È®ÀÎÇÒ ¼ö ÀÖÀ½.
+	//ìš”ê±¸ í•´ì¤˜ì•¼ ëŸ°íƒ€ì„ì‹œ ì½˜ì†”ì—ì„œ ì‹œìŠ¤í…œ ì¶œë ¥ì„ í™•ì¸í•  ìˆ˜ ìˆìŒ.
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
-	//¹®ÀÚ¿­, ¼ıÀÚ, ±¸Á¶Ã¼¸¦ °¡Áö°í ÀÖ´Â  ¸®½ºÆ®¸¦ ¸¸µç´Ù
+	//ë¬¸ìì—´, ìˆ«ì, êµ¬ì¡°ì²´ë¥¼ ê°€ì§€ê³  ìˆëŠ”  ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“ ë‹¤
 	 GQueue* q = g_queue_new();
 
 	 g_queue_push_tail(q, makePerson("Misa", 3));
