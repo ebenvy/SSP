@@ -3,12 +3,14 @@
  *
  *  Created on: 2017. 9. 6.
  *      Author: LGCNS
+ 
  */
 
 #include <glib.h>
 
 int main(int argc, char** argv) {
  GHashTable* hash = g_hash_table_new(g_str_hash, g_str_equal);
+ 
  g_hash_table_insert(hash, "Virginia", "Richmond");
  g_hash_table_insert(hash, "Texas", "Austin");
  g_hash_table_insert(hash, "Ohio", "Columbus");
