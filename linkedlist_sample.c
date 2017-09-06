@@ -2,7 +2,7 @@
  * linkedlist_sample.c
  *
  *  Created on: 2017. 4. 16.
- *      Author: ÀÌ¼ÒÁ¤
+ *      Author: ì´ì†Œì •
  */
 #include<stdio.h>
 #include<glib.h>
