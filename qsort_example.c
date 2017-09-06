@@ -1,10 +1,3 @@
-/*
- * qsort_example.c
- *
- *  Created on: 2017. 8. 29.
- *      Author: LGCNS
- */
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -35,7 +28,7 @@ void main()
 	}
 
 }
-//¿À¸§ Â÷¼ø
+//ì˜¤ë¦„ ì°¨ìˆœ
 int compare_fun(void* a, void* b)
 {
 	TYPE *left = (TYPE *)a;
@@ -47,7 +40,7 @@ int compare_fun(void* a, void* b)
 	}
 	return -1;
 }
-//³»¸² Â÷¼ø
+//ë‚´ë¦¼ ì°¨ìˆœ
 /*int compare_fun(void* a, void* b)
 {
 	TYPE *left = (TYPE *)a;
