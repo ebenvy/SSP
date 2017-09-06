@@ -1,11 +1,3 @@
-/*
- * readDirectory.c
- *
- *  Created on: 2017. 9. 6.
- *      Author: LGCNS
- */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -21,7 +13,7 @@ int main()
 
 			  /* print all the files and directories within directory */
 			  while ((ent = readdir (dir)) != NULL) {
-				  //ÆÄÀÏ¸í¿¡ .log Æ÷ÇÔµÈ °æ¿ì
+				  //íŒŒì¼ëª…ì— .log í¬í•¨ëœ ê²½ìš°
 				  	  if(strstr(ent->d_name,".log")!= NULL)
 				  		  printf ("%s\n", ent->d_name);
 			  }
